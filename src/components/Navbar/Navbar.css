@@ -1,0 +1,22 @@
+.site__logo a {
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 2px solid #25262a;
+    color: #000 !important;
+}
+
+.site__logo a:hover {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 300px) {
+    .site__logo a {
+        letter-spacing: .01em;
+        font-size: 16px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
