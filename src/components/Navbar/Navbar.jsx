@@ -10,12 +10,13 @@ const navigation = [
     { name: 'Shop', href: '#', current: false },
     { name: 'New Arrivals', href: '#', current: false },
     { name: 'Contact', href: '#', current: false },
+    { name: 'About', href: '#', current: false },
 ];
 
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
     { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
+    { name: 'Sign In', href: '#' },
 ]
 
 function classNames(...classes) {
@@ -75,7 +76,7 @@ const Navbar = ({ children }) => {
                                             >
                                                 <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                                             </button>
-                                            <span className="absolute -top-2 -right-1 inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                            <span className="absolute -top-2 -right-1 inline-flex items-center rounded-full bg-red-700 px-2 py-1 text-xs font-medium text-white common__update">
                                                 6
                                             </span>
                                         </NavLink>

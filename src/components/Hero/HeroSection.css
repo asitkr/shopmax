@@ -13,7 +13,7 @@
 }
 
 .site-blocks-cover,
-.site-blocks-cover .row {
+.site-blocks-cover {
     min-height: 600px;
     height: calc(100vh - 174px);
 }

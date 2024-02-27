@@ -11,7 +11,7 @@ const HeroSection = () => {
         <>
             <div className="site-blocks-cover">
                 <div className="container mx-auto sm:px-4">
-                    <div className="flex flex-wrap ">
+                    <div className="flex flex-wrap">
                         <div className="md:w-1/2 pr-4 pl-4 ml-auto md:order-2 self-start">
                             <div className="site-block-cover-content">
                                 <h2 className="sub-title">#New Lifestyle Collection 2019</h2>

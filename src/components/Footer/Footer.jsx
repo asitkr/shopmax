@@ -63,17 +63,16 @@ const Footer = () => {
 
                             <div className="block-7">
                                 <form>
-                                    <label for="email_subscribe" className="footer-heading">Subscribe</label>
-                                    <div className="mb-4 flex relative">
+                                    <label className="footer-heading">Subscribe</label>
+                                    <div className="mb-4 flex relative mt-3">
                                         <input
                                             type="text"
-                                            className="block appearance-none w-full h-12 py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded py-4 focus:outline-none"
-                                            id="email_subscribe"
+                                            className="block appearance-none w-full h-12 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded py-4 input__type"
                                             placeholder="Email"
                                         />
                                         <input
                                             type="submit"
-                                            className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded no-underline py-1 px-2 leading-tight text-xs bg-blue-600 text-white hover:bg-blue-600 absolute h-12 right-0 uppercase button__send px-5 text-2xl"
+                                            className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded no-underline py-1 leading-tight text-white absolute h-10 uppercase button__send px-5 text-xl top-1 right-1 common__update"
                                             value="Send"
                                         />
                                     </div>
