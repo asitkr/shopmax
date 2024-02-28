@@ -12,7 +12,7 @@ const NewCollection = () => {
                                 <h2 className="sub-title">#New LifeStyle Collection 2019</h2>
                                 <h1>New Shoes</h1>
                                 <p>
-                                    <NavLink to="#" className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-black rounded-none bg-black text-white">SHOP NOW</NavLink>
+                                    <NavLink to="#" className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-1 px-3 leading-normal no-underline btn-black rounded-none bg-black text-white">SHOP NOW</NavLink>
                                 </p>
                             </div>
                         </div>

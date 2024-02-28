@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { NavLink } from 'react-router-dom';
-import { HeartIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, PhoneIcon, MapPinIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
 const Footer = () => {
     return (
@@ -30,7 +30,7 @@ const Footer = () => {
                                     <ul className="list-unstyled">
                                         <li><NavLink to="#">Sell online</NavLink></li>
                                         <li><NavLink to="#">Features</NavLink></li>
-                                        <li><NavLink to="#">Shopping cart</NavLink></li>
+                                        <li><NavLink to="/cart">Shopping cart</NavLink></li>
                                         <li><NavLink to="#">Store builder</NavLink></li>
                                     </ul>
                                 </div>
@@ -55,9 +55,22 @@ const Footer = () => {
                             <div className="block-5 mb-5">
                                 <h3 className="footer-heading mb-4">Contact Info</h3>
                                 <ul className="list-unstyled">
-                                    <li className="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                                    <li className="phone"><a to="tel://23923929210">+2 392 3929 210</a></li>
-                                    <li className="email">emailaddress@domain.com</li>
+                                    <li className="address flex">
+                                        <MapPinIcon className='w-5 h-5 flex-shrink-0 mr-2 all__rounder__color font-bold' />
+                                        203 Fake St. Mountain View, San Francisco, California, USA</li>
+                                    <li className="phone flex">
+                                        <PhoneIcon className='w-5 h-5 flex-shrink-0 mr-2 all__rounder__color' />
+                                        <NavLink to="tel://23923929210">
+                                            +2 392 3929 210
+                                        </NavLink>
+                                    </li>
+                                    <li className="email flex">
+                                        <EnvelopeIcon className='w-5 h-5 flex-shrink-0 mr-2 all__rounder__color' />
+                                        <NavLink to="mailto:emailaddress@domain.com">
+                                            emailaddress@domain.com
+                                        </NavLink>
+
+                                    </li>
                                 </ul>
                             </div>
 

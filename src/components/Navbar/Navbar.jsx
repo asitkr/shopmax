@@ -1,17 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import './Navbar.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Search from '../Search/Search';
-
-const navigation = [
-    { name: 'Home', href: '/', current: true },
-    { name: 'Shop', href: '#', current: false },
-    { name: 'New Arrivals', href: '#', current: false },
-    { name: 'Contact', href: '#', current: false },
-    { name: 'About', href: '#', current: false },
-];
 
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
@@ -30,7 +22,27 @@ const user = {
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 
-const Navbar = ({ children }) => {
+const Navbar = () => {
+
+    const location = useLocation();
+    const [navigation, setNavigation] = useState([
+        { name: 'Home', href: '/', current: false },
+        { name: 'Shop', href: '/shop', current: false },
+        { name: 'New Arrivals', href: '/new-arrivals', current: false },
+        { name: 'Contact', href: '/contact', current: false },
+        { name: 'About', href: '/about', current: false },
+    ]);
+
+    useEffect(() => {
+        const updatedNavigation = navigation.map((item) => ({
+            ...item,
+            current: item.href === location.pathname,
+        }));
+
+        setNavigation(updatedNavigation);
+    }, [location.pathname, navigation]);
+
+
     return (
         <>
             <Disclosure as="nav" className="bg-white">
@@ -52,12 +64,10 @@ const Navbar = ({ children }) => {
                                                 <NavLink
                                                     key={item.name}
                                                     to={item.href}
-                                                    className={classNames(
-                                                        item.current
-                                                            ? 'bg-gray-900 text-white'
-                                                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                        'rounded-md px-3 py-2 text-base font-medium'
-                                                    )}
+                                                    className={`rounded-md px-3 py-2 text-base font-medium ${item.current
+                                                        ? 'bg-gray-900 text-white'
+                                                        : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                                                        }`}
                                                     aria-current={item.current ? 'page' : undefined}
                                                 >
                                                     {item.name}
@@ -80,7 +90,6 @@ const Navbar = ({ children }) => {
                                                 6
                                             </span>
                                         </NavLink>
-
 
                                         {/* Profile dropdown */}
                                         <Menu as="div" className="relative ml-3">
@@ -191,11 +200,6 @@ const Navbar = ({ children }) => {
                     </>
                 )}
             </Disclosure>
-            <main>
-                <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-                    {children}
-                </div>
-            </main>
         </>
     )
 }

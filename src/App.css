@@ -3,5 +3,5 @@
 }
 
 .input__type:focus {
-  outline: 1px solid #ee4266;
+  outline: 2px solid #ee4266;
 }
