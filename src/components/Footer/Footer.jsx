@@ -26,7 +26,7 @@ const Footer = () => {
                                 <div className="md:w-full pr-4 pl-4">
                                     <h3 className="footer-heading mb-4">Quick Links</h3>
                                 </div>
-                                <div className="md:w-1/2 pr-4 pl-4 lg:w-1/3 pr-4 pl-4">
+                                <div className="md:w-1/2 pr-4 pl-4 lg:w-1/3">
                                     <ul className="list-unstyled">
                                         <li><NavLink to="#">Sell online</NavLink></li>
                                         <li><NavLink to="#">Features</NavLink></li>
@@ -34,14 +34,14 @@ const Footer = () => {
                                         <li><NavLink to="#">Store builder</NavLink></li>
                                     </ul>
                                 </div>
-                                <div className="md:w-1/2 pr-4 pl-4 lg:w-1/3 pr-4 pl-4">
+                                <div className="md:w-1/2 pr-4 pl-4 lg:w-1/3">
                                     <ul className="list-unstyled">
                                         <li><NavLink to="#">Mobile commerce</NavLink></li>
                                         <li><NavLink to="#">Dropshipping</NavLink></li>
                                         <li><NavLink to="#">Website development</NavLink></li>
                                     </ul>
                                 </div>
-                                <div className="md:w-1/2 pr-4 pl-4 lg:w-1/3 pr-4 pl-4">
+                                <div className="md:w-1/2 pr-4 pl-4 lg:w-1/3">
                                     <ul className="list-unstyled">
                                         <li><NavLink to="#">Point of sale</NavLink></li>
                                         <li><NavLink to="#">Hardware</NavLink></li>
@@ -51,7 +51,7 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        <div className="md:w-1/2 pr-4 pl-4 lg:w-1/4 pr-4 pl-4">
+                        <div className="md:w-1/2 pr-4 pl-4 lg:w-1/4">
                             <div className="block-5 mb-5">
                                 <h3 className="footer-heading mb-4">Contact Info</h3>
                                 <ul className="list-unstyled">
@@ -97,8 +97,9 @@ const Footer = () => {
                         <div className="md:w-full pr-4 pl-4">
                             <p className='flex justify-center items-center py-5'>
                                 Copyright &copy;
-                                <span className='mr-1'>{new Date().getFullYear()};</span> All rights reserved | Managed
-                                <HeartIcon className='w-5 h-5 flex-shrink-0' /> by  <NavLink to="https://colorlib.com" target="_blank"
+                                <span className='mr-1'>{new Date().getFullYear()};</span> All rights reserved | Managed&nbsp;
+                                <HeartIcon className='w-5 h-5 flex-shrink-0' />&nbsp;by
+                                <NavLink to="https://colorlib.com" target="_blank"
                                     className="text-blue-600 ml-1">Ashit</NavLink>
                             </p>
                         </div>

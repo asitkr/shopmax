@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import './Navbar.css';
@@ -8,7 +8,7 @@ import Search from '../Search/Search';
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
     { name: 'Settings', href: '#' },
-    { name: 'Sign In', href: '#' },
+    { name: 'Sign In', href: '/login' },
 ]
 
 function classNames(...classes) {
@@ -26,20 +26,25 @@ const Navbar = () => {
 
     const location = useLocation();
     const [navigation, setNavigation] = useState([
-        { name: 'Home', href: '/', current: false },
+        { name: 'Home', href: '/', current: true },
         { name: 'Shop', href: '/shop', current: false },
         { name: 'New Arrivals', href: '/new-arrivals', current: false },
         { name: 'Contact', href: '/contact', current: false },
         { name: 'About', href: '/about', current: false },
     ]);
 
-    useEffect(() => {
-        const updatedNavigation = navigation.map((item) => ({
-            ...item,
-            current: item.href === location.pathname,
-        }));
+    const prevLocation = useRef(location.pathname);
 
-        setNavigation(updatedNavigation);
+    useEffect(() => {
+        if (location.pathname !== prevLocation.current) {
+            const updatedNavigation = navigation.map((nav) => ({
+                ...nav,
+                current: nav.href === location.pathname,
+            }));
+
+            setNavigation(updatedNavigation);
+            prevLocation.current = location.pathname;
+        }
     }, [location.pathname, navigation]);
 
 

@@ -163,7 +163,11 @@ const Cart = () => {
 
                                         <div className="flex flex-wrap ">
                                             <div className="md:w-full pr-4 pl-4">
-                                                <button className="align-middle text-center select-none border font-normal whitespace-no-wrap rounded  no-underline py-2 px-4 leading-tight text-xl block w-full common__update">Proceed To Checkout</button>
+                                                <NavLink
+                                                    to={'/checkout'}
+                                                    className="align-middle text-center select-none border font-normal whitespace-no-wrap rounded  no-underline py-2 px-4 leading-tight text-xl block w-full common__update">
+                                                    Proceed To Checkout
+                                                </NavLink>
                                             </div>
                                         </div>
                                     </div>

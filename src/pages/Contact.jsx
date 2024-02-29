@@ -84,7 +84,7 @@ const Contact = () => {
                                         <div className="lg:w-full pr-4 pl-4">
                                             <input
                                                 type="submit"
-                                                className="align-middle text-center select-none border font-normal whitespace-no-wrap rounded no-underline text-xl block w-full uppercase h-10 text-sm common__update" value="Send Message" />
+                                                className="align-middle text-center select-none border font-normal whitespace-no-wrap rounded no-underline block w-full uppercase h-10 text-sm common__update" value="Send Message" />
                                         </div>
                                     </div>
                                 </div>

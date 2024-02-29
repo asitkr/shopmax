@@ -1,0 +1,107 @@
+.slider {
+    position: relative;
+    width: 200px;
+}
+
+.slider__track,
+.slider__range {
+    border-radius: 3px;
+    height: 5px;
+    position: absolute;
+}
+
+.slider__track {
+    border-color: #ee4266;
+    width: 100%;
+    border: 1px solid #ee4266;
+    z-index: 1;
+}
+
+.slider__range {
+    border-color: #ee4266;
+    z-index: 2;
+}
+
+/* Removing the default appearance */
+.thumb,
+.thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.thumb {
+    pointer-events: none;
+    position: absolute;
+    height: 0;
+    width: 200px;
+    outline: none;
+}
+
+.thumb--zindex-3 {
+    z-index: 3;
+}
+
+.thumb--zindex-4 {
+    z-index: 4;
+}
+
+/* For Chrome browsers */
+.thumb::-webkit-slider-thumb {
+    background-color: #ee4266;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 1px #ee4266;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    margin-top: 4px;
+    pointer-events: all;
+    position: relative;
+}
+
+/* For Firefox browsers */
+.thumb::-moz-range-thumb {
+    background-color: #ee4266;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 1px #ced4da;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    margin-top: 4px;
+    pointer-events: all;
+    position: relative;
+}
+
+.thumb--zindex-5 {
+    z-index: 5;
+}
+
+.site-block-27 ul,
+.site-block-27 ul li {
+    padding: 0;
+    margin: 0;
+}
+
+.site-block-27 ul li {
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.site-block-27 ul li a,
+.site-block-27 ul li span {
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.site-block-27 ul li.active a,
+.site-block-27 ul li.active span {
+    background: #ee4266;
+    color: #fff;
+    border: 1px solid transparent;
+}

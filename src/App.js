@@ -7,11 +7,17 @@ import Contact from './pages/Contact';
 import PageNotFound from './pages/PageNotFound';
 import About from './pages/About';
 import ThankYou from './pages/ThankYou';
+import Checkout from './pages/Checkout';
+import Shop from './pages/Shop';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout><Home /></Layout>,
+  },
+  {
+    path: "/shop",
+    element: <Layout><Shop /></Layout>,
   },
   {
     path: "/cart",
@@ -24,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <Layout><About /></Layout>,
+  },
+  {
+    path: "/checkout",
+    element: <Layout><Checkout /></Layout>,
   },
   {
     path: "/thankyou",
