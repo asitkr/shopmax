@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './css/Shop.css';
 import { NavLink } from 'react-router-dom';
 import { Menu } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import Discover from '../components/Hero/Discover';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllCategoryName } from '../redux/slices/GetCategoriesNameSlice';
+import { fetchAllProduct } from '../redux/slices/GetAllProduct';
 
 const Shop = () => {
 
+    const dispatch = useDispatch();
+    const allCategoryName = useSelector(state => state.categoryName.categoryDataName);
+    const allProduct = useSelector(state => state.allProduct.productData);
     const [isDropdownLatest, setDropdownLatest] = useState(false);
     const [isDropdownReference, setDropdownReference] = useState(false);
     const [minValue1, setMinValue1] = useState(0);
@@ -39,6 +45,15 @@ const Shop = () => {
 
     const isRange = minValue1 === 1000 && minValue2 === 1000;
 
+    useEffect(() => {
+        dispatch(fetchAllCategoryName());
+    }, []);
+
+    useEffect(() => {
+        dispatch(fetchAllProduct());
+    }, []);
+
+    console.log(allProduct.length);
 
     return (
         <>
@@ -50,7 +65,7 @@ const Shop = () => {
                                 <h2 className="sub-title">#New Lifestyle Collection {new Date().getFullYear()}</h2>
                                 <h1>Arrivals Sales</h1>
                                 <p>
-                                    <NavLink to="/shop" className="align-middle text-center select-none border font-normal whitespace-no-wrap py-1 px-3 leading-normal no-underline btn-black rounded-none bg-black hover:bg-gray-900 text-white">
+                                    <NavLink to="/product" className="align-middle text-center select-none border font-normal whitespace-no-wrap py-1 px-3 leading-normal no-underline btn-black rounded-none bg-black hover:bg-gray-900 text-white">
                                         Shop Now
                                     </NavLink>
                                 </p>
@@ -101,26 +116,16 @@ const Shop = () => {
                                             </Menu.Button>
                                             {
                                                 isDropdownLatest && (
-                                                    <div className="absolute left-0 z-50 mt-1 text-base bg-white border rounded shadow-lg"
-                                                        style={{ borderColor: '#ee4266' }}>
-                                                        <NavLink
-                                                            className="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap"
-                                                            to="#"
-                                                        >
-                                                            Men
-                                                        </NavLink>
-                                                        <NavLink
-                                                            className="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap"
-                                                            to="#"
-                                                        >
-                                                            Women
-                                                        </NavLink>
-                                                        <NavLink
-                                                            className="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap"
-                                                            to="#"
-                                                        >
-                                                            Children
-                                                        </NavLink>
+                                                    <div className="absolute left-0 w-44 z-50 mt-1 text-base bg-white border rounded shadow-lg" style={{ borderColor: '#ee4266' }}>
+                                                        {allCategoryName.length > 0 && allCategoryName?.map(item => (
+                                                            <NavLink
+                                                                className="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap"
+                                                                to="#"
+                                                                key={item}
+                                                            >
+                                                                {item}
+                                                            </NavLink>
+                                                        ))}
                                                     </div>
                                                 )
                                             }
@@ -162,200 +167,45 @@ const Shop = () => {
                                 </div>
                             </div>
                             <div className="flex flex-wrap  mb-5">
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink
-                                        to="#"
-                                        className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/prod_2.png"
-                                            alt="product"
-                                            className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Gray Shoe</NavLink>
-                                    </h2>
-                                    <strong className="item-price">₹20.00</strong>
-                                </div>
-                                <div className="lg:w-1/2 pr-4 pl-4 md:w-1/2 item-entry mb-4">
-                                    <NavLink
-                                        to="#"
-                                        className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/prod_3.png" alt="product" className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink
-                                            to="#">
-                                            Blue Shoe High Heels
-                                        </NavLink>
-                                    </h2>
-                                    <strong className="item-price">
-                                        <span className='text-gray-400 line-through'>₹46.00</span> ₹28.00</strong>
-                                </div>
-
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink
-                                        to="#"
-                                        className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/model_5.png"
-                                            alt="product"
-                                            className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Denim Jacket</NavLink>
-                                    </h2>
-                                    <strong className="item-price">
-                                        <span className='text-gray-400 line-through'>₹46.00</span> ₹28.00</strong>
-
-                                    <div className="star-rating">
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                    </div>
-
-                                </div>
-                                <div className="lg:w-1/2 pr-4 pl-4 md:w-1/2 item-entry mb-4">
-                                    <NavLink
-                                        to="#"
-                                        className="product-item md-height bg-gray block">
-                                        <img src="/assets/prod_1.png" alt="product" className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Leather Green Bag</NavLink>
-                                    </h2>
-                                    <strong className="item-price"><span className='text-gray-400 line-through'>₹46.00</span> ₹28.00</strong>
-                                    <div className="star-rating">
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                    </div>
-                                </div>
-
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink to="#" className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/model_1.png"
-                                            alt="product"
-                                            className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Smooth Cloth</NavLink>
-                                    </h2>
-                                    <strong className="item-price"><span className='text-gray-400 line-through'>₹46.00</span> ₹28.00</strong>
-                                </div>
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink
-                                        to="#"
-                                        className="product-item md-height bg-gray block">
-                                        <img src="/assets/model_7.png" alt="product" className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Yellow Jacket</NavLink>
-                                    </h2>
-                                    <strong className="item-price">₹58.00</strong>
-                                </div>
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink to="#" className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/prod_2.png"
-                                            alt="product"
-                                            className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Gray Shoe</NavLink>
-                                    </h2>
-                                    <strong className="item-price">₹20.00</strong>
-                                </div>
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink to="#" className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/prod_3.png"
-                                            alt="product"
-                                            className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Blue Shoe High Heels</NavLink>
-                                    </h2>
-                                    <strong className="item-price"><span className='text-gray-400 line-through'>₹46.00</span> ₹28.00</strong>
-                                </div>
-
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink
-                                        to="#"
-                                        className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/model_5.png"
-                                            alt="product"
-                                            className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Denim Jacket</NavLink>
-                                    </h2>
-                                    <strong className="item-price"><span className='text-gray-400 line-through'>₹46.00</span> ₹28.00</strong>
-                                    <div className="star-rating">
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                    </div>
-
-                                </div>
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink
-                                        to="#"
-                                        className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/prod_1.png"
-                                            alt="product"
-                                            className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Leather Green Bag</NavLink>
-                                    </h2>
-                                    <strong className="item-price"><span className='text-gray-400 line-through'>₹46.00</span> ₹28.00</strong>
-                                    <div className="star-rating">
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                        <span className="icon-star2 text-yellow-500"></span>
-                                    </div>
-                                </div>
-
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink
-                                        to="#"
-                                        className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/model_1.png"
-                                            alt="product"
-                                            className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Smooth Cloth</NavLink>
-                                    </h2>
-                                    <strong className="item-price"><span className='text-gray-400 line-through'>₹46.00</span> ₹28.00</strong>
-                                </div>
-                                <div className="lg:w-1/2 md:w-1/2 pr-4 pl-4 item-entry mb-4">
-                                    <NavLink
-                                        to="#"
-                                        className="product-item md-height bg-gray block">
-                                        <img
-                                            src="/assets/model_7.png"
-                                            alt="model"
-                                            className="max-w-full h-auto" />
-                                    </NavLink>
-                                    <h2 className="item-title">
-                                        <NavLink to="#">Yellow Jacket</NavLink>
-                                    </h2>
-                                    <strong className="item-price">₹58.00</strong>
-                                </div>
+                                {
+                                    allProduct && allProduct.length > 0 && allProduct?.map(item => (
+                                        <div className="lg:w-1/2 pr-4 pl-4 md:w-1/2 item-entry mb-4" key={item.id}>
+                                            <NavLink
+                                                to={`/product/${item.id}`}
+                                                className="product-item md-height bg-gray block">
+                                                <img
+                                                    src={item.image} alt="product" className="max-w-full h-auto" />
+                                            </NavLink>
+                                            <h2 className="item-title">
+                                                <NavLink
+                                                    to={`/product/${item.id}`}>
+                                                    {item.title}
+                                                </NavLink>
+                                            </h2>
+                                            <strong className="item-price">
+                                                <span className='text-gray-400 line-through'>₹46.00</span> ₹{item.price}</strong>
+                                            <div className="flex items-center -ml-2 pt-1">
+                                                {
+                                                    [1, 2, 3, 4, 5].map((star, index) => (
+                                                        <svg
+                                                            key={index}
+                                                            className={`w-4 mb-2 font-medium text-xl ${star <= item.rating.rate ? 'text-yellow-300' : 'text-gray-300 dark:text-gray-500'
+                                                                } ms-1`}
+                                                            aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="currentColor"
+                                                            viewBox="0 0 22 20"
+                                                        >
+                                                            <path
+                                                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                                                            />
+                                                        </svg>
+                                                    ))
+                                                }
+                                            </div>
+                                        </div>
+                                    ))
+                                }
                             </div>
                             <div className="flex flex-wrap ">
                                 <div className="md:w-full pr-4 pl-4 text-center">

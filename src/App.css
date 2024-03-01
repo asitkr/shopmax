@@ -9,3 +9,7 @@ input[type="checkbox"] {
 .input__type:focus {
   outline: 2px solid #ee4266;
 }
+
+.common__border__bottom {
+  border-bottom: 2xp solid #ee4266;
+}

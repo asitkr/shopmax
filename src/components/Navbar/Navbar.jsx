@@ -2,14 +2,8 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import './Navbar.css';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Search from '../Search/Search';
-
-const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign In', href: '/login' },
-]
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -25,13 +19,20 @@ const user = {
 const Navbar = () => {
 
     const location = useLocation();
+    const token = sessionStorage.getItem('token');
     const [navigation, setNavigation] = useState([
         { name: 'Home', href: '/', current: true },
-        { name: 'Shop', href: '/shop', current: false },
+        { name: 'Shop', href: '/product', current: false },
         { name: 'New Arrivals', href: '/new-arrivals', current: false },
         { name: 'Contact', href: '/contact', current: false },
         { name: 'About', href: '/about', current: false },
     ]);
+
+    const userNavigation = [
+        { name: 'Your Profile', href: '#' },
+        { name: 'Settings', href: '#' },
+        { name: token ? 'Sign Out' : 'Sign In', href: token ? '' : '/login' },
+    ]
 
     const prevLocation = useRef(location.pathname);
 
@@ -47,6 +48,10 @@ const Navbar = () => {
         }
     }, [location.pathname, navigation]);
 
+    const handleSignOut = () => {
+        sessionStorage.removeItem('token');
+        window.location.href = '/login';
+    }
 
     return (
         <>
@@ -125,7 +130,11 @@ const Navbar = () => {
                                                                         'block px-4 py-2 text-base text-gray-700'
                                                                     )}
                                                                 >
-                                                                    {item.name}
+                                                                    {item.name === 'Sign Out' ? (
+                                                                        <button onClick={handleSignOut}>{item.name}</button>
+                                                                    ) : (
+                                                                        item.name
+                                                                    )}
                                                                 </NavLink>
                                                             )}
                                                         </Menu.Item>
